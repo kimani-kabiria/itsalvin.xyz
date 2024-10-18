@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.2](https://github.com/kimani-kabiria/itsalvin.xyz/compare/v0.1.1...v0.1.2) (2024-10-18)
+
+
+### ✨ Features
+
+* final version bump update ([2a3a5fe](https://github.com/kimani-kabiria/itsalvin.xyz/commit/2a3a5febf89674618cacb0b6cd0c1af389a104ea))
+
 ### 0.1.1 (2024-10-18)
 
 
