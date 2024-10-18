@@ -1,0 +1,9 @@
+#!/bin/sh
+#. "$(dirname "$0")/_/husky.sh"
+
+# Prevent loop by skipping post-commit hook for version bump commits
+# if git log -1 --pretty=%B | grep -q 'chore(release):'; then
+#   exit 0
+# fi
+
+# pnpm release
