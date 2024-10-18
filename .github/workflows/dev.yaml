@@ -46,15 +46,6 @@ jobs:
         run: |
           git config --global user.email "${{ github.event.pusher.email }}"
           git config --global user.name "${{ github.event.pusher.name }}"
-
-      - name: Create Git Tag
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          VERSION=$(node -p "require('./package.json').version")
-          echo "Tagging new version: v$VERSION"
-          git tag "v$VERSION"
-          git push origin "v$VERSION"
           
       - name: Run version update script
         run: node scripts/version-update.js # Adjust path as necessary
