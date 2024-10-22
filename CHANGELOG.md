@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.4](https://github.com/kimani-kabiria/itsalvin.xyz/compare/v0.1.3...v0.1.4) (2024-10-22)
+
+
+### ✨ Features
+
+* added fonts to hero page ([24ae66e](https://github.com/kimani-kabiria/itsalvin.xyz/commit/24ae66e640c9df62139ed4aa5f55eda3e728d3af))
+
 ### [0.1.3](https://github.com/kimani-kabiria/itsalvin.xyz/compare/v0.1.2...v0.1.3) (2024-10-22)
 
 
