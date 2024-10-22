@@ -83,11 +83,14 @@ body {
       display: none;
     }
   }
+}
+
+@layer components {
   .background-grid {
     @apply relative z-0;
 
     &::before {
-      @apply bg-grid-[#c55333]/[0.10] absolute inset-0 z-[-1] content-[''];
+      @apply bg-grid-[#c55333]/[0.15] absolute inset-0 z-[-1] content-[''];
 
       mask-image: linear-gradient(transparent, black, transparent);
     }
