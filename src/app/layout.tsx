@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/providers/theme-provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
 import { Inter as FontSans } from "next/font/google";
+import clsx from "clsx";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -23,18 +24,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body
-        className={cn(
-          "min-h-screen bg-background font-sans antialiased max-w-2xl mx-auto py-12 sm:py-24 px-6",
-          fontSans.variable
-        )}
-      >
-        <ThemeProvider attribute="class" defaultTheme="light">
-          <TooltipProvider delayDuration={0}>
-            {children}
-            <NavBarDock />
-          </TooltipProvider>
-        </ThemeProvider>
+      <body className={cn("font-sans antialiased", fontSans.variable)}>
+        <main
+          className={clsx(
+            "background-grid background-grid--fade-out border-divider-light z-[900]",
+            "scrollbar-hide"
+          )}
+        >
+          <ThemeProvider attribute="class" defaultTheme="light">
+            <TooltipProvider delayDuration={0}>
+              {children}
+              <NavBarDock />
+            </TooltipProvider>
+          </ThemeProvider>
+        </main>
       </body>
     </html>
   );
