@@ -75,4 +75,48 @@ body {
   body {
     @apply bg-background text-foreground;
   }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}
+
+@layer components {
+  .background-grid {
+    @apply relative z-0;
+
+    &::before {
+      @apply bg-grid-[#c55333]/[0.15] absolute inset-0 z-[-1] content-[''];
+
+      mask-image: linear-gradient(transparent, black, transparent);
+    }
+
+    &--fade-in {
+      @apply bg-transparent;
+
+      &::before {
+        @apply bg-left-bottom;
+
+        mask-image: linear-gradient(transparent, black, black);
+      }
+    }
+
+    &--fade-out {
+      @apply bg-transparent;
+
+      &::before {
+        mask-image: linear-gradient(black, black, transparent);
+      }
+    }
+  }
+
+  .background-image {
+    &--fade-out {
+      mask-image: linear-gradient(black, black, transparent);
+    }
+  }
 }

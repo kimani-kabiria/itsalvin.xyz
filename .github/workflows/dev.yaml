@@ -1,0 +1,57 @@
+name: Dev Actions
+
+on:
+  push:
+    branches:
+      - dev
+  workflow_dispatch:
+
+env:
+  GITHUB_REPO: ${{ github.event.repository.name }}
+  GITHUB_PUSHER_NAME: ${{ github.event.pusher.name }}
+  GITHUB_PUSHER_EMAIL: ${{ github.event.pusher.email }}
+  GITHUB_HEAD_COMMIT: ${{ github.event.head_commit.url }}
+  GITHUB_MESG: ${{ github.event.head_commit.message }}
+  GITHUB_COMPARE: ${{ github.event.compare }}
+  GITHUB_VERSION: ${{ github.event.compare }}
+
+jobs:
+  # BUMP VERSION
+  bump-version:
+    name: Bump Version
+    runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, '[skip ci]')"
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Fetch all commits and tags
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18.x" # Adjust as needed
+
+      - name: Install pnpm
+        run: npm install -g pnpm
+
+      - name: Increase pnpm network timeout
+        run: pnpm config set network-timeout 600000
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Configure Git
+        run: |
+          git config --global user.email "${{ github.event.pusher.email }}"
+          git config --global user.name "${{ github.event.pusher.name }}"
+          
+      - name: Run version update script
+        run: node scripts/version-update.js # Adjust path as necessary
+
+      - name: Push Changes
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git push --follow-tags origin dev

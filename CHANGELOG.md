@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.4](https://github.com/kimani-kabiria/itsalvin.xyz/compare/v0.1.3...v0.1.4) (2024-10-22)
+
+
+### ✨ Features
+
+* added fonts to hero page ([24ae66e](https://github.com/kimani-kabiria/itsalvin.xyz/commit/24ae66e640c9df62139ed4aa5f55eda3e728d3af))
+
+### [0.1.3](https://github.com/kimani-kabiria/itsalvin.xyz/compare/v0.1.2...v0.1.3) (2024-10-22)
+
+
+### ✨ Features
+
+* added grid bg ([001149f](https://github.com/kimani-kabiria/itsalvin.xyz/commit/001149f6b0348143e890d1543206d3d7f60c6437))
+* started designing the hero page ([f7affda](https://github.com/kimani-kabiria/itsalvin.xyz/commit/f7affda60b708ef5765e534777d0943edbd38744))
+
+### [0.1.2](https://github.com/kimani-kabiria/itsalvin.xyz/compare/v0.1.1...v0.1.2) (2024-10-18)
+
+
+### ✨ Features
+
+* final version bump update ([2a3a5fe](https://github.com/kimani-kabiria/itsalvin.xyz/commit/2a3a5febf89674618cacb0b6cd0c1af389a104ea))
+
 ### 0.1.1 (2024-10-18)
 
 

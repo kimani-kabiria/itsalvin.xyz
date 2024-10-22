@@ -1,6 +1,6 @@
 {
   "name": "itsalvin.xyz",
-  "version": "0.1.1",
+  "version": "0.1.4",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -19,6 +19,7 @@
     "clsx": "^2.1.1",
     "framer-motion": "^11.11.9",
     "lucide-react": "^0.453.0",
+    "mini-svg-data-uri": "^1.4.4",
     "next": "14.2.15",
     "next-themes": "^0.3.0",
     "react": "^18",
