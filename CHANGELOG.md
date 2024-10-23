@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.6](https://github.com/kimani-kabiria/itsalvin.xyz/compare/v0.1.5...v0.1.6) (2024-10-23)
+
+
+### ✨ Features
+
+* added acorn font & lottie files ([9f3514f](https://github.com/kimani-kabiria/itsalvin.xyz/commit/9f3514f7c70b949e6750605eece418dd1289bffc))
+* updated hero ([42cc567](https://github.com/kimani-kabiria/itsalvin.xyz/commit/42cc5677fdcb317319a1fac65f04fd594b912384))
+
+
+### 🐛 Bug Fixes
+
+* fixed lottie build ([6c47400](https://github.com/kimani-kabiria/itsalvin.xyz/commit/6c47400583ce287239a865b369378ea181cee002))
+
 ### [0.1.5](https://github.com/kimani-kabiria/itsalvin.xyz/compare/v0.1.4...v0.1.5) (2024-10-23)
 
 
