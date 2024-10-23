@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.5](https://github.com/kimani-kabiria/itsalvin.xyz/compare/v0.1.4...v0.1.5) (2024-10-23)
+
+
+### 🐛 Bug Fixes
+
+* lint fixes on build error ([2ef71aa](https://github.com/kimani-kabiria/itsalvin.xyz/commit/2ef71aafa8ec362252c2f2ba44814c5b190a0021))
+
 ### [0.1.4](https://github.com/kimani-kabiria/itsalvin.xyz/compare/v0.1.3...v0.1.4) (2024-10-22)
 
 
