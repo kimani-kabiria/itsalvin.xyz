@@ -1,6 +1,6 @@
 {
   "name": "itsalvin.xyz",
-  "version": "0.1.2",
+  "version": "0.1.7",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -19,10 +19,12 @@
     "clsx": "^2.1.1",
     "framer-motion": "^11.11.9",
     "lucide-react": "^0.453.0",
+    "mini-svg-data-uri": "^1.4.4",
     "next": "14.2.15",
     "next-themes": "^0.3.0",
     "react": "^18",
     "react-dom": "^18",
+    "react-lottie": "^1.2.4",
     "tailwind-merge": "^2.5.4",
     "tailwindcss-animate": "^1.0.7"
   },
@@ -32,6 +34,7 @@
     "@types/node": "^22",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@types/react-lottie": "^1.2.10",
     "eslint": "^9",
     "eslint-config-next": "14.2.15",
     "husky": "^9.1.6",
