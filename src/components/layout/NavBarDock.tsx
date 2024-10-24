@@ -64,7 +64,7 @@ export function NavBarDock() {
             </Tooltip>
           </DockIcon>
         ))}
-        <Separator orientation="vertical" className="h-full py-2" />
+        {/* <Separator orientation="vertical" className="h-full py-2" />
         <DockIcon>
           <Tooltip>
             <TooltipTrigger asChild>
@@ -74,7 +74,7 @@ export function NavBarDock() {
               <p>Theme</p>
             </TooltipContent>
           </Tooltip>
-        </DockIcon>
+        </DockIcon> */}
       </Dock>
     </div>
   );
