@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.7](https://github.com/kimani-kabiria/itsalvin.xyz/compare/v0.1.6...v0.1.7) (2024-10-24)
+
+
+### 🐛 Bug Fixes
+
+* updated hero spacing ([f3c8bc1](https://github.com/kimani-kabiria/itsalvin.xyz/commit/f3c8bc1b175680c17d4a7cc57b0023b8fa4e6010))
+
+
+### ✨ Features
+
+* added Footer component ([a145bb8](https://github.com/kimani-kabiria/itsalvin.xyz/commit/a145bb8ff9b2f803844d9283e246d234b5541904))
+* added TimeBar theme changer ([d67a561](https://github.com/kimani-kabiria/itsalvin.xyz/commit/d67a561a5db7549ef50b3e87ba213b5fc0d8aecb))
+* removes theme switcher from dock ([75d3e81](https://github.com/kimani-kabiria/itsalvin.xyz/commit/75d3e815aca52b1997674993ca05c2ae3de6e4e3))
+
 ### [0.1.6](https://github.com/kimani-kabiria/itsalvin.xyz/compare/v0.1.5...v0.1.6) (2024-10-23)
 
 

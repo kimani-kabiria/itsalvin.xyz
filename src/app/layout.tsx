@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { NavBarDock } from "@/components/layout";
+import { NavBarDock, Footer } from "@/components/layout";
 import { ThemeProvider } from "@/providers/theme-provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
@@ -61,7 +61,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={cn("font-sans antialiased", fontSans.variable, acornBold.variable, acornMedium.variable, acornRegular.variable)}>
+      <body className={cn("flex flex-col font-sans antialiased", fontSans.variable, acornBold.variable, acornMedium.variable, acornRegular.variable)}>
         <main
           className={clsx(
             "background-grid background-grid--fade-out border-divider-light z-[900]",
@@ -71,6 +71,7 @@ export default function RootLayout({
           <ThemeProvider attribute="class" defaultTheme="light">
             <TooltipProvider delayDuration={0}>
               {children}
+              <Footer />
               <NavBarDock />
             </TooltipProvider>
           </ThemeProvider>
