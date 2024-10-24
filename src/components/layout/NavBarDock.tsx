@@ -99,16 +99,16 @@ const DATA = {
         url: "#",
         icon: Icons.linkedin,
       },
-      X: {
-        name: "X",
-        url: "#",
-        icon: Icons.x,
-      },
-      email: {
-        name: "Send Email",
-        url: "#",
-        icon: Icons.mail,
-      },
+      // X: {
+      //   name: "X",
+      //   url: "#",
+      //   icon: Icons.x,
+      // },
+      // email: {
+      //   name: "Send Email",
+      //   url: "#",
+      //   icon: Icons.mail,
+      // },
     },
   },
 };
