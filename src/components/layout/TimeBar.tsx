@@ -33,7 +33,7 @@ export function TimeBarThemeSwitcher() {
   };
 
   return (
-    <div className="relative flex items-center justify-center py-12 px-4 mb-8">
+    <div className="relative flex items-center justify-center py-12 px-4 mb-8 mx-auto">
       {/* Time Bars */}
       <div className="flex items-center space-x-1 sm:space-x-6">
         {hours.map((hour) => (
