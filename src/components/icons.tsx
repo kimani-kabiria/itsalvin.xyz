@@ -49,6 +49,14 @@ import {
   X,
 } from "lucide-react";
 
+import {
+  SiNextdotjs,
+  SiVercel,
+  SiTailwindcss,
+  SiFigma,
+  SiGithub,
+} from "react-icons/si";
+
 export type Icon = LucideIcon;
 
 export const Icons = {
@@ -133,4 +141,8 @@ export const Icons = {
   home: HomeIcon,
   briefcaseBusiness: BriefcaseBusiness,
   contact: Contact,
+  nextdotjs: SiNextdotjs,
+  vercel: SiVercel,
+  tailwindcss: SiTailwindcss,
+  figma: SiFigma,
 };
