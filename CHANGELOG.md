@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.8](https://github.com/kimani-kabiria/itsalvin.xyz/compare/v0.1.7...v0.1.8) (2024-10-25)
+
+
+### 🐛 Bug Fixes
+
+* automated theme switch on theme provider ([359630a](https://github.com/kimani-kabiria/itsalvin.xyz/commit/359630abd4a469c457e319c18697ec291cf818b9))
+
+
+### ✨ Features
+
+* added footer message, tool_items icons & copyright ([9857bf2](https://github.com/kimani-kabiria/itsalvin.xyz/commit/9857bf2edcc7f033e84465a74a8b4265c9d09bdf))
+
 ### [0.1.7](https://github.com/kimani-kabiria/itsalvin.xyz/compare/v0.1.6...v0.1.7) (2024-10-24)
 
 
