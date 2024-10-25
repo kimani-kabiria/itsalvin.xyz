@@ -55,23 +55,23 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Hi👋, its Alvin",
     description: "This is my portfolio.",
-    url: "https://myawesomeapp.com", // Your website URL
+    // url: "https://myawesomeapp.com", // Your website URL
     type: "website",
-    images: [
-      {
-        url: "https://myawesomeapp.com/og-image.png", // Path to your Open Graph image
-        width: 1200,
-        height: 630,
-        alt: "Hi👋, its Alvin Image",
-      },
-    ],
+    // images: [
+    //   {
+    //     // url: "https://myawesomeapp.com/og-image.png", // Path to your Open Graph image
+    //     width: 1200,
+    //     height: 630,
+    //     alt: "Hi👋, its Alvin Image",
+    //   },
+    // ],
   },
   twitter: {
     card: "summary_large_image",
     site: "@yourtwitterhandle",
     title: "Hi👋, its Alvin",
     description: "This is my portfolio.",
-    image: "https://myawesomeapp.com/twitter-image.png", // Path to your Twitter card image
+    // image: "https://myawesomeapp.com/twitter-image.png", // Path to your Twitter card image
   },
   robots: "index, follow",
   viewport: "width=device-width, initial-scale=1.0",
