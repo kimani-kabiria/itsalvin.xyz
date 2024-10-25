@@ -68,7 +68,7 @@ export default function RootLayout({
             "scrollbar-hide"
           )}
         >
-          <ThemeProvider attribute="class" defaultTheme="light">
+          <ThemeProvider attribute="class">
             <TooltipProvider delayDuration={0}>
               {children}
               <Footer />
