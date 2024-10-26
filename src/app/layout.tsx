@@ -49,10 +49,34 @@ const acornMedium = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Hi👋🏽, Its Alvin",
-  description: "I'm passionate about crafting experiences that are engaging, accessible, and user-centric.",
-};
-
+  title: "Hi👋, its Alvin",
+  description: "This is my portfolio.",
+  // SEO optimization
+  openGraph: {
+    title: "Hi👋, its Alvin",
+    description: "This is my portfolio.",
+    // url: "https://myawesomeapp.com", // Your website URL
+    type: "website",
+    // images: [
+    //   {
+    //     // url: "https://myawesomeapp.com/og-image.png", // Path to your Open Graph image
+    //     width: 1200,
+    //     height: 630,
+    //     alt: "Hi👋, its Alvin Image",
+    //   },
+    // ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: "@yourtwitterhandle",
+    title: "Hi👋, its Alvin",
+    description: "This is my portfolio.",
+    // image: "https://myawesomeapp.com/twitter-image.png", // Path to your Twitter card image
+  },
+  robots: "index, follow",
+  viewport: "width=device-width, initial-scale=1.0",
+  keywords: "Next.js, SEO, Web Development, Awesome App",
+};;
 
 export default function RootLayout({
   children,
@@ -68,7 +92,7 @@ export default function RootLayout({
             "scrollbar-hide"
           )}
         >
-          <ThemeProvider attribute="class" defaultTheme="light">
+          <ThemeProvider attribute="class">
             <TooltipProvider delayDuration={0}>
               {children}
               <Footer />

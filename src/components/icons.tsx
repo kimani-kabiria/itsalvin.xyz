@@ -49,6 +49,14 @@ import {
   X,
 } from "lucide-react";
 
+import {
+  SiNextdotjs,
+  SiVercel,
+  SiTailwindcss,
+  SiFigma,
+  SiGithub,
+} from "react-icons/si";
+
 export type Icon = LucideIcon;
 
 export const Icons = {
@@ -96,6 +104,17 @@ export const Icons = {
       />
     </svg>
   ),
+  quote: ({ ...props }: LucideProps) => (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 20 20"
+      role="img"
+      fill="currentColor"
+      {...props}
+    >
+      <path d="M7.27273 16.3833H0L5.30713 4H10.0737L7.27273 16.3833ZM17.199 16.3833H9.92629L15.2334 4H20L17.199 16.3833Z" />
+    </svg>
+  ),
   gitHub: ({ ...props }: LucideProps) => (
     <svg
       aria-hidden="true"
@@ -133,4 +152,8 @@ export const Icons = {
   home: HomeIcon,
   briefcaseBusiness: BriefcaseBusiness,
   contact: Contact,
-};
+  nextdotjs: SiNextdotjs,
+  vercel: SiVercel,
+  tailwindcss: SiTailwindcss,
+  figma: SiFigma,
+} as const;
