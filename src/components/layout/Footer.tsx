@@ -24,7 +24,7 @@ export function Footer() {
           {TOOLBOX_FOOT_ITEMS.map((item) => {
             const Icon = Icons[item.icon || "arrowRight"];
             return (
-              <>
+              <div key={item.label}>
                 <Tooltip>
                   <TooltipTrigger>
                     <Icon className={`size-8 text-duka-green`} />
@@ -33,7 +33,7 @@ export function Footer() {
                     <p>{item.label}</p>
                   </TooltipContent>
                 </Tooltip>
-              </>
+              </div>
             );
           })}
         </div>
