@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.11](https://github.com/kimani-kabiria/itsalvin.xyz/compare/v0.1.10...v0.1.11) (2024-12-20)
+
+
+### ✨ Features
+
+* next 15 update & fixed footer bug ([c34b461](https://github.com/kimani-kabiria/itsalvin.xyz/commit/c34b461b4edc9db10c6ef8193cd023f5dcab6674))
+
 ### [0.1.10](https://github.com/kimani-kabiria/itsalvin.xyz/compare/v0.1.9...v0.1.10) (2024-10-26)
 
 
