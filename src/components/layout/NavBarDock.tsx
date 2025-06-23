@@ -91,12 +91,12 @@ const DATA = {
     social: {
       GitHub: {
         name: "GitHub",
-        url: "#",
+        url: "https://github.com/kimani-kabiria",
         icon: Icons.gitHub,
       },
       LinkedIn: {
         name: "LinkedIn",
-        url: "#",
+        url: "https://www.linkedin.com/in/kimanikabiria",
         icon: Icons.linkedin,
       },
       // X: {

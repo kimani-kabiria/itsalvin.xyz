@@ -37,7 +37,7 @@ export function Hero() {
         </div>
         <div className="flex lg:max-w-[80%]">
           <h2 className="text-[1.35em] md:text-[1.5em] font-medium text-left font-[family-name:var(--font-acorn-medium)]">
-            An Engineer & Designer , who loves crafting intelligent and beautiful looking things that live on the internet.
+            An Architect & Engineer , who loves crafting intelligent and beautiful looking things that live on the internet.
           </h2>
         </div>
       </div>
