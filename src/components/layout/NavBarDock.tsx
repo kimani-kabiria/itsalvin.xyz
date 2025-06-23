@@ -96,7 +96,7 @@ const DATA = {
       },
       LinkedIn: {
         name: "LinkedIn",
-        url: "https://www.linkedin.com/in/kimanikabiria,
+        url: "https://www.linkedin.com/in/kimanikabiria",
         icon: Icons.linkedin,
       },
       // X: {
