@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.12](https://github.com/kimani-kabiria/itsalvin.xyz/compare/v0.1.11...v0.1.12) (2025-06-23)
+
+
+### ✨ Features
+
+* updated hero ([189409d](https://github.com/kimani-kabiria/itsalvin.xyz/commit/189409dfd8460842ed11c59eb7bd0c409b663b10))
+* upgraded packages and updated dock links ([51e066e](https://github.com/kimani-kabiria/itsalvin.xyz/commit/51e066ef7f2051b952934fd33c2fa0fafb41b038))
+
+
+### 🐛 Bug Fixes
+
+* fixed link error ([429889a](https://github.com/kimani-kabiria/itsalvin.xyz/commit/429889abe39c790da56d31720c7c03009a7e9124))
+* pnpm lock file ([faa6196](https://github.com/kimani-kabiria/itsalvin.xyz/commit/faa61963b9f6b7594c5b19256374c22908a599c2))
+
 ### [0.1.11](https://github.com/kimani-kabiria/itsalvin.xyz/compare/v0.1.10...v0.1.11) (2024-12-20)
 
 
