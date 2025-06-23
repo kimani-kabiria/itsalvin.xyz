@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.11](https://github.com/kimani-kabiria/itsalvin.xyz/compare/v0.1.10...v0.1.11) (2024-12-20)
+
+
+### ✨ Features
+
+* next 15 update & fixed footer bug ([c34b461](https://github.com/kimani-kabiria/itsalvin.xyz/commit/c34b461b4edc9db10c6ef8193cd023f5dcab6674))
+
+### [0.1.10](https://github.com/kimani-kabiria/itsalvin.xyz/compare/v0.1.9...v0.1.10) (2024-10-26)
+
+
+### 🚚 Chores
+
+* added nyxbui ([bbda781](https://github.com/kimani-kabiria/itsalvin.xyz/commit/bbda781bc43228684b98f8038a4bd86d6fb9f9f8))
+
+
+### 🐛 Bug Fixes
+
+* updated layout meta and navbar sizing ([b60ea59](https://github.com/kimani-kabiria/itsalvin.xyz/commit/b60ea599c6337291fc161b6cf8253026d8110be5))
+
 ### [0.1.9](https://github.com/kimani-kabiria/itsalvin.xyz/compare/v0.1.8...v0.1.9) (2024-10-25)
 
 
