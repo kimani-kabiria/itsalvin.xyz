@@ -19,7 +19,7 @@ export function AboutHero() {
             {/* Title */}
             <div className="max-w-2xl flex flex-col items-center justify-center">
                 <h1 className="text-[4em] sm:text-[8.75rem] font-bold font-[family-name:var(--font-acorn-bold)]">
-                    I'm Alvin
+                    I&apos;m Alvin
                 </h1>
             </div>
 
