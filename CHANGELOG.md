@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.13](https://github.com/kimani-kabiria/itsalvin.xyz/compare/v0.1.12...v0.1.13) (2025-08-11)
+
+
+### ✨ Features
+
+* added experience section ([1a78e84](https://github.com/kimani-kabiria/itsalvin.xyz/commit/1a78e84a683bbe68889ea8b2ed8b360e5d006caa))
+* added storyline and updated font for experience companies ([f5d34a2](https://github.com/kimani-kabiria/itsalvin.xyz/commit/f5d34a26961261939908c7ae9e2de54cd5eca072))
+* created hero for about me page ([939ce21](https://github.com/kimani-kabiria/itsalvin.xyz/commit/939ce210d6dd237551324eeb49a67dcfc7f6e334))
+
 ### [0.1.12](https://github.com/kimani-kabiria/itsalvin.xyz/compare/v0.1.11...v0.1.12) (2025-06-23)
 
 
