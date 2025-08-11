@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.14](https://github.com/kimani-kabiria/itsalvin.xyz/compare/v0.1.13...v0.1.14) (2025-08-11)
+
+
+### 🚚 Chores
+
+* updated packages ([3e5732f](https://github.com/kimani-kabiria/itsalvin.xyz/commit/3e5732fd31ae0d6768160a79f1dfbd737c4f2209))
+
+
+### 🐛 Bug Fixes
+
+* eslint errors & warnings ([2f58082](https://github.com/kimani-kabiria/itsalvin.xyz/commit/2f5808264e2be0ad0f1a885e56773d126917a8b2))
+
 ### [0.1.13](https://github.com/kimani-kabiria/itsalvin.xyz/compare/v0.1.12...v0.1.13) (2025-08-11)
 
 
