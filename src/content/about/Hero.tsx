@@ -10,7 +10,7 @@ import MyImage from "@/assets/images/me.jpg";
 export function AboutHero() {
     const unbxdUrl = "https://beunbxd.com";
     return (
-        <div className="relative flex flex-col items-center justify-center space-y-8 px-6 py-32 md:px-32">
+        <div className="relative flex flex-col items-center justify-center space-y-8 px-6 sm:py-20 py-8 md:px-32">
             {/* Background layer */}
             <div className="absolute inset-0 z-0 flex items-center justify-center">
                 <div className="w-full h-full bg-background-light dark:bg-background-dark"></div>

@@ -1,11 +1,12 @@
 "use client";
 
-import { AboutHero } from "@/content/about";
+import { AboutHero, Experience } from "@/content/about";
 
 export default function About(){
     return (
         <div>
             <AboutHero />
+            <Experience />
         </div>
     );
 }
