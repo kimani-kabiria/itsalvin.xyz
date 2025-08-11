@@ -2,6 +2,41 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.14](https://github.com/kimani-kabiria/itsalvin.xyz/compare/v0.1.13...v0.1.14) (2025-08-11)
+
+
+### 🚚 Chores
+
+* updated packages ([3e5732f](https://github.com/kimani-kabiria/itsalvin.xyz/commit/3e5732fd31ae0d6768160a79f1dfbd737c4f2209))
+
+
+### 🐛 Bug Fixes
+
+* eslint errors & warnings ([2f58082](https://github.com/kimani-kabiria/itsalvin.xyz/commit/2f5808264e2be0ad0f1a885e56773d126917a8b2))
+
+### [0.1.13](https://github.com/kimani-kabiria/itsalvin.xyz/compare/v0.1.12...v0.1.13) (2025-08-11)
+
+
+### ✨ Features
+
+* added experience section ([1a78e84](https://github.com/kimani-kabiria/itsalvin.xyz/commit/1a78e84a683bbe68889ea8b2ed8b360e5d006caa))
+* added storyline and updated font for experience companies ([f5d34a2](https://github.com/kimani-kabiria/itsalvin.xyz/commit/f5d34a26961261939908c7ae9e2de54cd5eca072))
+* created hero for about me page ([939ce21](https://github.com/kimani-kabiria/itsalvin.xyz/commit/939ce210d6dd237551324eeb49a67dcfc7f6e334))
+
+### [0.1.12](https://github.com/kimani-kabiria/itsalvin.xyz/compare/v0.1.11...v0.1.12) (2025-06-23)
+
+
+### ✨ Features
+
+* updated hero ([189409d](https://github.com/kimani-kabiria/itsalvin.xyz/commit/189409dfd8460842ed11c59eb7bd0c409b663b10))
+* upgraded packages and updated dock links ([51e066e](https://github.com/kimani-kabiria/itsalvin.xyz/commit/51e066ef7f2051b952934fd33c2fa0fafb41b038))
+
+
+### 🐛 Bug Fixes
+
+* fixed link error ([429889a](https://github.com/kimani-kabiria/itsalvin.xyz/commit/429889abe39c790da56d31720c7c03009a7e9124))
+* pnpm lock file ([faa6196](https://github.com/kimani-kabiria/itsalvin.xyz/commit/faa61963b9f6b7594c5b19256374c22908a599c2))
+
 ### [0.1.11](https://github.com/kimani-kabiria/itsalvin.xyz/compare/v0.1.10...v0.1.11) (2024-12-20)
 
 

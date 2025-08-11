@@ -9,7 +9,6 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { ModeToggle } from "@/components/mode-toggle";
 import { Dock, DockIcon } from "@/components/magicui/dock";
 
 import { Icons } from "@/components/icons";
@@ -82,8 +81,8 @@ export function NavBarDock() {
 
 const DATA = {
   navbar: [
-    { href: "#", icon: Icons.home, label: "Home" },
-    { href: "#", icon: Icons.contact, label: "About Me" },
+    { href: "/", icon: Icons.home, label: "Home" },
+    { href: "/about", icon: Icons.contact, label: "About Me" },
     { href: "#", icon: Icons.briefcaseBusiness, label: "Work" },
     { href: "#", icon: Icons.notebook, label: "Blog" },
   ],

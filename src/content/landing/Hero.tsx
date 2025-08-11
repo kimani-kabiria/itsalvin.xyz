@@ -1,5 +1,3 @@
-import { cn } from "@/lib/utils";
-import clsx from "clsx";
 import Lottie from "react-lottie";
 
 import Hello from "@/assets/lotties/hello.json";
@@ -29,7 +27,7 @@ export function Hero() {
       <div className="flex flex-col w-full justify-center items-start">
         <div className="flex w-full space-x-4">
           <h1 className="text-[3em] sm:text-[5.75rem] font-bold text-left font-[family-name:var(--font-acorn-bold)]">
-            Hi, I'm Alvin
+            Hi, I&apos;m Alvin
           </h1>
           <div className="flex sm:w-28 sm:h-28 w-16 h-16">
             <Lottie options={helloOptions} />
