@@ -9,7 +9,6 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { ModeToggle } from "@/components/mode-toggle";
 import { Dock, DockIcon } from "@/components/magicui/dock";
 
 import { Icons } from "@/components/icons";

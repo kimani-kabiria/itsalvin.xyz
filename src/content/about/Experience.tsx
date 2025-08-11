@@ -1,7 +1,5 @@
 "use client";
 
-import { cn } from "@/lib/utils";
-
 export function Experience() {
     const experiences = [
         { company: "Unbxd Creative Lab", role: "Co-Founder", years: "2022 ~", row: 1, colStart: 21, colSpan: 6 },

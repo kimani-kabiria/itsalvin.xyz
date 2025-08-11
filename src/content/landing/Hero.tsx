@@ -1,5 +1,3 @@
-import { cn } from "@/lib/utils";
-import clsx from "clsx";
 import Lottie from "react-lottie";
 
 import Hello from "@/assets/lotties/hello.json";
