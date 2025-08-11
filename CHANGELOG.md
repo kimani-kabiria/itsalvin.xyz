@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.15](https://github.com/kimani-kabiria/itsalvin.xyz/compare/v0.1.14...v0.1.15) (2025-08-11)
+
+
+### 🐛 Bug Fixes
+
+* downgraded tailwind to v3 ([24e7f8c](https://github.com/kimani-kabiria/itsalvin.xyz/commit/24e7f8cb1212848e043d86f7bb5a45dcd8136816))
+
+
+### 🚚 Chores
+
+* updated tailwind ([59be985](https://github.com/kimani-kabiria/itsalvin.xyz/commit/59be985fbbfa1b7869a0bf514df190e764dcae28))
+
 ### [0.1.14](https://github.com/kimani-kabiria/itsalvin.xyz/compare/v0.1.13...v0.1.14) (2025-08-11)
 
 
