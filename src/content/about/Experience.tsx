@@ -25,7 +25,7 @@ export function Experience() {
                             }}
                         >
                             <div className="flex-1">
-                                <h3 className="text-sm md:text-base font-semibold">{exp.company}</h3>
+                                <h3 className="text-[1em] sm:text-[1.25rem] font-semibold font-[family-name:var(--font-acorn-bold)]">{exp.company}</h3>
                                 <p className="text-xs md:text-sm">{exp.role}</p>
                             </div>
                             <div className="ml-2 text-xs md:text-sm font-medium">{exp.years}</div>
