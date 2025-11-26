@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.16](https://github.com/kimani-kabiria/itsalvin.xyz/compare/v0.1.15...v0.1.16) (2025-11-26)
+
+
+### ✨ Features
+
+* final page animation ([5cbe015](https://github.com/kimani-kabiria/itsalvin.xyz/commit/5cbe01546c20d786e511ba7e9ee9ee66f7110fac))
+* fixed some ui and animation on about page for experience ([12b830f](https://github.com/kimani-kabiria/itsalvin.xyz/commit/12b830f5bcf1b744e8f0a490437ed1f1c87a7072))
+* mobile responsiveness ([1af79a9](https://github.com/kimani-kabiria/itsalvin.xyz/commit/1af79a91998e613870bb7e51611dc3f0dcacddbd))
+* smooth transition animation between sections ([901de17](https://github.com/kimani-kabiria/itsalvin.xyz/commit/901de176e0661dbfea9b5929fa8b153d4f13cdee))
+
 ### [0.1.15](https://github.com/kimani-kabiria/itsalvin.xyz/compare/v0.1.14...v0.1.15) (2025-08-11)
 
 
