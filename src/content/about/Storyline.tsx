@@ -35,14 +35,14 @@ export function Storyline({ scrollProgress }: StorylineProps = {}) {
             {/* Sticky header */}
             <div className="sticky top-0 left-0 w-full z-50 bg-background/90 backdrop-blur-sm">
                 <div className="max-w-2xl mx-auto py-4">
-                    <h2 className="text-[4em] sm:text-[6.75rem] font-bold font-[family-name:var(--font-acorn-bold)] text-center">
+                    <h2 className="text-[3em] sm:text-[6.75rem] font-bold font-[family-name:var(--font-acorn-bold)] text-center">
                         My Story
                     </h2>
                 </div>
             </div>
 
             {/* Content with proper spacing */}
-            <div className="relative z-10 mx-auto max-w-5xl px-8 pt-8">
+            <div className="relative z-10 sm:mx-auto sm:max-w-5xl px-3 sm:px-8 pt-8">
                 {/* The Film Reel Strip */}
                 <motion.div
                     className="relative"
@@ -65,18 +65,18 @@ export function Storyline({ scrollProgress }: StorylineProps = {}) {
                                 <motion.div
                                     key={i}
                                     style={{ opacity, scale, filter }}
-                                    className="relative mx-auto max-w-3xl"
+                                    className="relative sm:mx-auto sm:max-w-3xl"
                                 >
                                     {/* Film frame border */}
-                                    <div className="rounded-3xl p-16 shadow-2xl bg-primary dark:bg-primary/5 backdrop-blur-md">
+                                    <div className="rounded-3xl p-6 sm:p-16 shadow-2xl bg-primary dark:bg-primary/5 backdrop-blur-md">
                                         <motion.div
                                             style={{ filter }}
                                             className="space-y-6 text-center"
                                         >
-                                            <h3 className="text-white text-6xl font-black tracking-tighter sm:text-7xl md:text-8xl font-[family-name:var(--font-acorn-bold)]">
+                                            <h3 className="text-white text-4xl font-black tracking-tighter sm:text-7xl md:text-8xl font-[family-name:var(--font-acorn-bold)]">
                                                 {item.title}
                                             </h3>
-                                            <p className="mx-auto max-w-2xl text-lg leading-relaxed text-gray-300 md:text-xl">
+                                            <p className="mx-auto max-w-2xl sm:text-lg leading-relaxed text-gray-300 md:text-xl">
                                                 {item.description}
                                             </p>
                                         </motion.div>
