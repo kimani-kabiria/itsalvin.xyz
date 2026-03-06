@@ -5,12 +5,14 @@ import { PostCard } from './PostCard';
 import { BlogSidebar } from './BlogSidebar';
 import { LoadingSpinner } from './LoadingSpinner';
 import { MobileMenuDrawer } from './MobileMenuDrawer';
+import { BlogHeader } from './BlogHeader';
 import type { Post, Category } from '@/types/sanity';
 
 interface BlogClientProps {
   initialPosts: Post[];
   categories: Category[];
   totalPosts: number;
+  onSearchChange?: (query: string) => void;
 }
 
 const POSTS_PER_PAGE = 6;
@@ -21,6 +23,7 @@ export function BlogClient({ initialPosts, categories, totalPosts }: BlogClientP
   const [hasMore, setHasMore] = useState(initialPosts.length < totalPosts);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [filteredPosts, setFilteredPosts] = useState<Post[]>(initialPosts);
+  const [searchQuery, setSearchQuery] = useState<string>('');
   const observer = useRef<IntersectionObserver | null>(null);
 
   const loadMorePosts = useCallback(async () => {
@@ -30,16 +33,17 @@ export function BlogClient({ initialPosts, categories, totalPosts }: BlogClientP
     
     try {
       const categoryParam = selectedCategory ? `&category=${encodeURIComponent(selectedCategory)}` : '';
-      const skip = selectedCategory ? filteredPosts.length : posts.length;
+      const searchParam = searchQuery ? `&search=${encodeURIComponent(searchQuery)}` : '';
+      const skip = selectedCategory || searchQuery ? filteredPosts.length : posts.length;
       
       const response = await fetch(
-        `/api/posts?limit=${POSTS_PER_PAGE}&skip=${skip}${categoryParam}`
+        `/api/posts?limit=${POSTS_PER_PAGE}&skip=${skip}${categoryParam}${searchParam}`
       );
       
       if (response.ok) {
         const newPosts: Post[] = await response.json();
         
-        if (selectedCategory) {
+        if (selectedCategory || searchQuery) {
           setFilteredPosts(prev => [...prev, ...newPosts]);
         } else {
           setPosts(prev => [...prev, ...newPosts]);
@@ -52,7 +56,7 @@ export function BlogClient({ initialPosts, categories, totalPosts }: BlogClientP
     } finally {
       setLoading(false);
     }
-  }, [loading, hasMore, selectedCategory, filteredPosts.length, posts.length]);
+  }, [loading, hasMore, selectedCategory, searchQuery, filteredPosts.length, posts.length]);
 
   const lastPostRef = useCallback(
     (node: HTMLDivElement) => {
@@ -70,11 +74,14 @@ export function BlogClient({ initialPosts, categories, totalPosts }: BlogClientP
 
   useEffect(() => {
     const filterPosts = async () => {
-      if (selectedCategory) {
+      if (selectedCategory || searchQuery) {
         setLoading(true);
         try {
+          const categoryParam = selectedCategory ? `&category=${encodeURIComponent(selectedCategory)}` : '';
+          const searchParam = searchQuery ? `&search=${encodeURIComponent(searchQuery)}` : '';
+          
           const response = await fetch(
-            `/api/posts?category=${encodeURIComponent(selectedCategory)}&limit=${POSTS_PER_PAGE}`
+            `/api/posts?limit=${POSTS_PER_PAGE}${categoryParam}${searchParam}`
           );
           
           if (response.ok) {
@@ -94,12 +101,14 @@ export function BlogClient({ initialPosts, categories, totalPosts }: BlogClientP
     };
 
     filterPosts();
-  }, [selectedCategory, posts, totalPosts]);
+  }, [selectedCategory, searchQuery, posts, totalPosts]);
 
-  const displayPosts = selectedCategory ? filteredPosts : posts;
+  const displayPosts = selectedCategory || searchQuery ? filteredPosts : posts;
 
   return (
     <div className="relative">
+      <BlogHeader onSearchChange={setSearchQuery} />
+      
       {/* Mobile Menu */}
       <MobileMenuDrawer
         categories={categories}
@@ -143,7 +152,12 @@ export function BlogClient({ initialPosts, categories, totalPosts }: BlogClientP
           {displayPosts.length === 0 && !loading && (
             <div className="text-center py-12">
               <p className="text-gray-500 dark:text-gray-400">
-                {selectedCategory ? `No posts found in "${selectedCategory}"` : 'No posts found'}
+                {searchQuery 
+                  ? `No posts found matching "${searchQuery}"`
+                  : selectedCategory 
+                    ? `No posts found in "${selectedCategory}"` 
+                    : 'No posts found'
+                }
               </p>
             </div>
           )}

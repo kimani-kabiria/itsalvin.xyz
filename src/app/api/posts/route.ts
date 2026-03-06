@@ -8,6 +8,7 @@ export async function GET(request: NextRequest) {
     const limit = parseInt(searchParams.get('limit') || '6');
     const skip = parseInt(searchParams.get('skip') || '0');
     const category = searchParams.get('category');
+    const search = searchParams.get('search');
 
     let query = `*[
       _type == "post"
@@ -15,6 +16,10 @@ export async function GET(request: NextRequest) {
     
     if (category) {
       query += ` && $category in categories[].title`;
+    }
+    
+    if (search) {
+      query += ` && (title match $search || pt::text(body) match $search)`;
     }
     
     query += `]|order(publishedAt desc)[${skip}...${skip + limit}]{
@@ -29,7 +34,10 @@ export async function GET(request: NextRequest) {
 
     const posts = await client.fetch<Post[]>(
       query,
-      category ? { category } : {},
+      { 
+        ...(category && { category }),
+        ...(search && { search: `*${search}*` })
+      },
       { next: { revalidate: 30 } }
     );
 

@@ -1,7 +1,10 @@
 import { BlogClient } from '@/components/blog/BlogClient';
-import { BlogHeader } from '@/components/blog/BlogHeader';
 import { client } from '@/sanity/client';
 import type { Post, Category } from '@/types/sanity';
+import { blogMetadata } from './metadata';
+import { generateBlogJsonLd } from '@/components/blog/JsonLd';
+import { Metadata } from 'next';
+import { JsonLd } from '@/components/blog/JsonLd';
 
 const POSTS_QUERY = `*[
   _type == "post"
@@ -26,6 +29,22 @@ const TOTAL_POSTS_QUERY = `count(*[_type == "post" && defined(slug.current)])`;
 
 const options = { next: { revalidate: 30 } };
 
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    title: blogMetadata.title,
+    description: blogMetadata.description,
+    keywords: blogMetadata.keywords,
+    openGraph: {
+      ...blogMetadata.openGraph,
+      url: 'https://itsalvin.xyz/blog',
+    },
+    twitter: blogMetadata.twitter,
+    alternates: {
+      canonical: 'https://itsalvin.xyz/blog',
+    },
+  };
+}
+
 export default async function BlogPage() {
   const [posts, categories, totalPosts] = await Promise.all([
     client.fetch<Post[]>(POSTS_QUERY, {}, options),
@@ -34,16 +53,19 @@ export default async function BlogPage() {
   ]);
 
   return (
-    <main className="container mx-auto min-h-screen px-4 py-8">
-      <div className="max-w-7xl mx-auto">
-        <BlogHeader />
-        
-        <BlogClient 
-          initialPosts={posts}
-          categories={categories}
-          totalPosts={totalPosts}
-        />
-      </div>
-    </main>
+    <>
+      {/* Structured Data */}
+      <script />
+      
+      <main className="container mx-auto min-h-screen px-4 py-8">
+        <div className="max-w-7xl mx-auto">
+          <BlogClient 
+            initialPosts={posts}
+            categories={categories}
+            totalPosts={totalPosts}
+          />
+        </div>
+      </main>
+    </>
   );
 }
