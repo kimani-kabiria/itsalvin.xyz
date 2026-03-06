@@ -1,8 +1,13 @@
 'use client';
 
 import { motion } from 'motion/react';
+import { BlogSearch } from './BlogSearch';
 
-export function BlogHeader() {
+interface BlogHeaderProps {
+  onSearchChange?: (query: string) => void;
+}
+
+export function BlogHeader({ onSearchChange }: BlogHeaderProps) {
   return (
     <div className="mb-12 text-center">
       <h1 className="text-[4em] sm:text-[8.75rem] font-bold font-[family-name:var(--font-acorn-bold)] text-gray-900 dark:text-white mb-4 leading-tight">
@@ -17,6 +22,12 @@ export function BlogHeader() {
       <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mt-8">
         Where half-formed ideas, lessons, and curiosities come to stretch their legs.
       </p>
+      
+      {onSearchChange && (
+        <div className="max-w-md mx-auto mt-8">
+          <BlogSearch onSearch={onSearchChange} />
+        </div>
+      )}
     </div>
   );
 }
