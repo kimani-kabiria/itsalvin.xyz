@@ -1,23 +1,48 @@
 "use client";
 
 import { motion, useTransform } from "motion/react";
-import { useRef } from "react";
+import { useRef, useState } from "react";
+import { WorkDetailModal } from "@/components/WorkDetailModal";
+import { Experience as ExperienceType, WorkDetail } from "@/types/sanity";
 
 type ExperienceProps = {
     scrollProgress?: any;
+    experiences?: ExperienceType[];
 };
 
-export function Experience({ scrollProgress }: ExperienceProps = {}) {
+export function Experience({ scrollProgress, experiences: initialExperiences }: ExperienceProps = {}) {
     const containerRef = useRef<HTMLDivElement>(null);
     const progress = scrollProgress || 0;
+    const experiences = initialExperiences || [];
+    const [workDetails, setWorkDetails] = useState<WorkDetail[]>([]);
+    const [selectedExperience, setSelectedExperience] = useState<ExperienceType | null>(null);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
 
-    const experiences = [
-        { company: "Unbxd Creative Lab", role: "Co-Founder", years: "2022 ~", row: 1, colStart: 21, colSpan: 6 },
-        { company: "Co-operative Bank of Kenya", role: "Full Stack Engineer", years: "May 2020 ~ ", row: 2, colStart: 12, colSpan: 10 },
-        { company: "Freelance", role: "Architect & Designer", years: "2016 ~ 2020", row: 3, colStart: 10, colSpan: 16 },
-        { company: "Topaz Digital", role: "Web & Embedded Engineer", years: "2017-2018", row: 4, colStart: 6, colSpan: 6 },
-        { company: "Geekmergency", role: "C.T.O", years: "2013 - 2016", row: 5, colStart: 1, colSpan: 5 },
-    ] as const;
+    const handleExperienceClick = async (experience: ExperienceType) => {
+        setSelectedExperience(experience);
+        setIsLoading(true);
+        
+        try {
+            const response = await fetch(`/api/work-details?experienceId=${experience._id}`);
+            if (!response.ok) {
+                throw new Error('Failed to fetch work details');
+            }
+            const details = await response.json();
+            setWorkDetails(details);
+            setIsModalOpen(true);
+        } catch (error) {
+            console.error('Failed to fetch work details:', error);
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
+    const handleCloseModal = () => {
+        setIsModalOpen(false);
+        setSelectedExperience(null);
+        setWorkDetails([]);
+    };
 
     // Pre-calculate all animations
     const animations = experiences.map((_, i) => {
@@ -65,13 +90,14 @@ export function Experience({ scrollProgress }: ExperienceProps = {}) {
                                 className="w-full"
                             >
                                 <motion.div
-                                    className="flex h-full flex-col justify-center rounded-2xl bg-primary dark:bg-primary/40 p-6 text-white shadow-2xl backdrop-blur-sm"
+                                    className="flex h-full flex-col justify-center rounded-2xl bg-primary dark:bg-primary/40 p-6 text-white shadow-2xl backdrop-blur-sm cursor-pointer"
                                     whileTap={{ scale: 0.98 }}
                                     transition={{
                                         type: "spring",
                                         stiffness: 500,
                                         damping: 30,
                                     }}
+                                    onClick={() => handleExperienceClick(job)}
                                 >
                                     <div className="flex flex-col space-y-2 sm:flex-row sm:items-start sm:justify-between sm:space-y-0">
                                         <div>
@@ -108,13 +134,14 @@ export function Experience({ scrollProgress }: ExperienceProps = {}) {
                                 className="relative"
                             >
                                 <motion.div
-                                    className="flex h-full flex-col justify-center rounded-2xl bg-primary dark:bg-primary/40 p-6 text-white shadow-2xl backdrop-blur-sm sm:p-8"
+                                    className="flex h-full flex-col justify-center rounded-2xl bg-primary dark:bg-primary/40 p-6 text-white shadow-2xl backdrop-blur-sm sm:p-8 cursor-pointer"
                                     whileTap={{ scale: 0.98 }}
                                     transition={{
                                         type: "spring",
                                         stiffness: 500,
                                         damping: 30,
                                     }}
+                                    onClick={() => handleExperienceClick(job)}
                                 >
                                     <div className="flex items-start justify-between">
                                         <div>
@@ -133,6 +160,15 @@ export function Experience({ scrollProgress }: ExperienceProps = {}) {
                     })}
                 </div>
             </div>
+            
+            {/* Work Detail Modal */}
+            <WorkDetailModal
+                isOpen={isModalOpen}
+                onClose={handleCloseModal}
+                workDetails={workDetails}
+                companyName={selectedExperience?.company || ''}
+                role={selectedExperience?.role || ''}
+            />
         </section>
     );
 }

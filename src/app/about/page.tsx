@@ -1,60 +1,21 @@
-"use client";
+import { client } from "@/sanity/client";
+import { Experience as ExperienceType } from "@/types/sanity";
+import AboutClient from "./AboutClient";
 
-import { motion, useScroll, useTransform } from "motion/react";
-import { useRef } from "react";
-import { AboutHero, Experience, Storyline } from "@/content/about";
+const EXPERIENCES_QUERY = `*[_type == "experience"] | order(row asc) {
+  _id,
+  company,
+  role,
+  years,
+  row,
+  colStart,
+  colSpan
+}`;
 
-export default function About() {
-    // One shared scroll tracker for the entire page
-    const containerRef = useRef<HTMLDivElement>(null);
+const options = { next: { revalidate: 30 } };
 
-    const { scrollYProgress } = useScroll({
-        target: containerRef,
-        offset: ["start start", "end end"],
-    });
+export default async function AboutPage() {
+  const experiences = await client.fetch<ExperienceType[]>(EXPERIENCES_QUERY, {}, options);
 
-    const heroProgress = useTransform(scrollYProgress, [0, 0.4], [0, 1]);
-
-    // Experience section: active from scroll 0% → 50%
-    const experienceProgress = useTransform(scrollYProgress, [0, 0.5], [0, 1]);
-    const experienceOpacity = useTransform(scrollYProgress, [0.5, 0.55], [1, 0]); // fade out slightly at end
-
-    // Storyline section: starts only after Experience is ~80% done
-    const storylineProgress = useTransform(scrollYProgress, [0.45, 1], [0, 1]);
-    const storylineOpacity = useTransform(scrollYProgress, [0.4, 0.5], [0, 1]); // fade in smoothly
-
-    return (
-        <div ref={containerRef} className="px-6">
-            {/* <AboutHero scrollProgress={heroProgress} /> */}
-            <AboutHero />
-
-            {/* EXPERIENCE – controlled by shared scroll */}
-            <div className="py-32">
-                <ExperienceScrollWrapper progress={experienceProgress} opacity={experienceOpacity} />
-            </div>
-
-            {/* STORYLINE – starts after Experience */}
-            <div className="py-32">
-                <StorylineScrollWrapper progress={storylineProgress} opacity={storylineOpacity} />
-            </div>
-        </div>
-    );
-}
-
-// Wrapper to pass scroll progress into Experience
-function ExperienceScrollWrapper({ progress, opacity }: { progress: any; opacity: any }) {
-    return (
-        <motion.div style={{ opacity }}>
-            <Experience scrollProgress={progress} />
-        </motion.div>
-    );
-}
-
-// Wrapper to pass scroll-control Storyline
-function StorylineScrollWrapper({ progress, opacity }: { progress: any; opacity: any }) {
-    return (
-        <motion.div style={{ opacity }}>
-            <Storyline scrollProgress={progress} />
-        </motion.div>
-    );
+  return <AboutClient experiences={experiences} />;
 }
