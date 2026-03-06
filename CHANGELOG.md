@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.18](https://github.com/kimani-kabiria/itsalvin.xyz/compare/v0.1.17...v0.1.18) (2026-03-06)
+
+
+### ✨ Features
+
+* blog pages design ([e718a05](https://github.com/kimani-kabiria/itsalvin.xyz/commit/e718a053a06627c36a93f9148681d93fe254076d))
+
 ### [0.1.17](https://github.com/kimani-kabiria/itsalvin.xyz/compare/v0.1.16...v0.1.17) (2026-03-06)
 
 
