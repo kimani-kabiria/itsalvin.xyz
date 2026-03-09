@@ -12,7 +12,7 @@ import { TOOLBOX_FOOT_ITEMS } from "@/lib/constants";
 
 export function Footer() {
   return (
-    <div className="flex flex-col w-full px-4 py-4 bottom-1 mx-auto justify-center items-center">
+    <div className="flex flex-col w-full px-4 py-4 bottom-1 mx-auto justify-center items-center overflow-visible">
       <div className="flex flex-col justify-center items-center py-8 space-y-2">
         <p className="text-xl text-center font-[family-name:var(--font-acorn-medium)]">
           This site was crafted with plenty cups of ☕
@@ -43,7 +43,9 @@ export function Footer() {
           &copy; {new Date().getFullYear()} Alvin Kimani. All rights reserved.
         </p>
       </div>
-      <TimeBarThemeSwitcher />
+      <div className="relative overflow-visible">
+        <TimeBarThemeSwitcher />
+      </div>
     </div>
   );
 }
