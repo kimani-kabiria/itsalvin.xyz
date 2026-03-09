@@ -35,17 +35,17 @@ export function ProjectCard({ project, onClick, size = "medium" }: ProjectCardPr
     idle: {
       scale: 1,
       rotate: 0,
-      transition: { duration: 0.4, ease: [0.4, 0, 0.2, 1] }
+      transition: { duration: 0.4, ease: [0.4, 0, 0.2, 1] as const }
     },
     hover: {
       scale: 1.02,
       rotate: [0, 1, -1, 0],
-      transition: { duration: 0.6, ease: [0.4, 0, 0.2, 1] }
+      transition: { duration: 0.6, ease: [0.4, 0, 0.2, 1] as const }
     },
     pressed: {
       scale: 0.98,
       rotate: [0, -1, 1, 0],
-      transition: { duration: 0.2, ease: [0.4, 0, 0.2, 1] }
+      transition: { duration: 0.2, ease: [0.4, 0, 0.2, 1] as const }
     }
   };
 
