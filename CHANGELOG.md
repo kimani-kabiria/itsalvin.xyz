@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.19](https://github.com/kimani-kabiria/itsalvin.xyz/compare/v0.1.18...v0.1.19) (2026-03-06)
+
+
+### ✨ Features
+
+* implemented blog search ([2393ac5](https://github.com/kimani-kabiria/itsalvin.xyz/commit/2393ac5e7f503d283a9131a865cd8e23e630a795))
+
 ### [0.1.18](https://github.com/kimani-kabiria/itsalvin.xyz/compare/v0.1.17...v0.1.18) (2026-03-06)
 
 
