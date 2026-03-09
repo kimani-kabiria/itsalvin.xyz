@@ -3,6 +3,8 @@ import { client } from "@/sanity/client";
 import type { Post } from "@/types/sanity";
 import { BlogPostHero } from "@/components/blog/BlogPostHero";
 import { BlogPostContent } from "@/components/blog/BlogPostContent";
+import { BlogNavigation } from "@/components/blog/BlogNavigation";
+import { RelatedPosts } from "@/components/blog/RelatedPosts";
 import { generatePostJsonLd } from "@/components/blog/JsonLd";
 import { JsonLd } from "@/components/blog/JsonLd";
 import { Metadata } from "next";
@@ -18,6 +20,34 @@ const POST_QUERY = `*[_type == "post" && slug.current == $slug][0]{
   author->{_id, name, slug},
   categories->{_id, title},
   body
+}`;
+
+const NAVIGATION_QUERY = `
+{
+  "previousPost": *[_type == "post" && publishedAt < $publishedAt] | order(publishedAt desc) [0]{
+    _id,
+    title,
+    slug,
+    publishedAt,
+    mainImage
+  },
+  "nextPost": *[_type == "post" && publishedAt > $publishedAt] | order(publishedAt asc) [0]{
+    _id,
+    title,
+    slug,
+    publishedAt,
+    mainImage
+  }
+}
+`;
+
+const RELATED_POSTS_QUERY = `*[_type == "post" && _id != $postId && $categories[_id in ^.categories[]._id]] | order(publishedAt desc) [0...3]{
+  _id,
+  title,
+  slug,
+  publishedAt,
+  mainImage,
+  categories->{_id, title}
 }`;
 
 const { projectId, dataset } = client.config();
@@ -86,6 +116,17 @@ export default async function PostPage({
     );
   }
 
+  // Fetch navigation data (next/previous posts)
+  const navigationData = await client.fetch(NAVIGATION_QUERY, { 
+    publishedAt: post.publishedAt 
+  }, options);
+
+  // Fetch related posts based on categories
+  const relatedPosts = await client.fetch<Post[]>(RELATED_POSTS_QUERY, {
+    postId: post._id,
+    categories: post.categories?.map(cat => cat._id) || []
+  }, options);
+
   const metadata = await generatePostMetadata(post);
 
   return (
@@ -99,6 +140,15 @@ export default async function PostPage({
         <section className="py-16 px-4">
           <div className="container mx-auto">
             <BlogPostContent post={post} />
+            
+            {/* Next/Previous Navigation */}
+            <BlogNavigation 
+              previousPost={navigationData?.previousPost || null} 
+              nextPost={navigationData?.nextPost || null} 
+            />
+            
+            {/* Related Posts */}
+            <RelatedPosts posts={relatedPosts} />
           </div>
         </section>
       </div>

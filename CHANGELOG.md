@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.20](https://github.com/kimani-kabiria/itsalvin.xyz/compare/v0.1.19...v0.1.20) (2026-03-09)
+
+
+### ✨ Features
+
+* added framer animations ([60afc7e](https://github.com/kimani-kabiria/itsalvin.xyz/commit/60afc7e6e878122dd0f5463f0522673c2af49ed4))
+
 ### [0.1.19](https://github.com/kimani-kabiria/itsalvin.xyz/compare/v0.1.18...v0.1.19) (2026-03-06)
 
 
