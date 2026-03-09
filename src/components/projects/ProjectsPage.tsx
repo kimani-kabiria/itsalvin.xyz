@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "motion/react";
-import { ProjectCard } from "./ProjectCard";
+import { ProjectCard } from "./ProjectCardInteractive";
 import { BottomDrawer } from "./BottomDrawer";
 import { Project, ProjectDetail } from "@/types/sanity";
 
@@ -20,12 +20,12 @@ export function ProjectsPage({ projects }: ProjectsPageProps) {
   const getCardSize = (index: number, isFeatured: boolean): "large" | "wide" | "medium" | "small" => {
     if (isFeatured) {
       // Featured projects get larger sizes
-      const sizes: ("large" | "wide" | "medium")[] = ["large", "wide", "medium"];
+      const sizes: ("large" | "wide" | "medium")[] = ["large", "wide", "large"];
       return sizes[index % sizes.length];
     }
     
-    // Regular projects get smaller sizes
-    const sizes: ("medium" | "small")[] = ["medium", "small", "small", "medium"];
+    // Regular projects get varied sizes for bento grid
+    const sizes: ("medium" | "small")[] = ["medium", "small", "medium", "small"];
     return sizes[index % sizes.length];
   };
 
@@ -120,7 +120,7 @@ export function ProjectsPage({ projects }: ProjectsPageProps) {
           </div>
         ) : (
           <motion.div
-            className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 auto-rows-[200px] gap-4"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 auto-rows-[300px] gap-6"
             variants={containerVariants}
             initial="hidden"
             animate="visible"

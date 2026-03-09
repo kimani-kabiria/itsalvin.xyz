@@ -100,7 +100,7 @@ export function TimeBarThemeSwitcher() {
                 whileHover={{
                   scaleY: 1.5,
                   scaleX: 1.25,
-                  brightness: 1.1,
+                  // brightness: 1.1,
                 }}
                 transition={{ type: "spring", stiffness: 400, damping: 25 }}
               />

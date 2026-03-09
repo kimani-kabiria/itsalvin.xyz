@@ -39,7 +39,7 @@ export function BottomDrawer({ isOpen, onClose, project, projectDetails }: Botto
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-40 bg-black/50 backdrop-blur-sm"
+            className="fixed top-0 left-0 right-0 z-40 h-1/2 bg-black/50 backdrop-blur-sm"
             onClick={onClose}
           />
           
@@ -49,7 +49,7 @@ export function BottomDrawer({ isOpen, onClose, project, projectDetails }: Botto
             animate={{ y: 0 }}
             exit={{ y: "100%" }}
             transition={{ type: "spring", stiffness: 300, damping: 30 }}
-            className="fixed bottom-0 left-0 right-0 z-50 max-h-[85vh] bg-background border-t shadow-2xl rounded-t-3xl"
+            className="fixed bottom-0 left-0 right-0 z-50 h-1/2 bg-background border-t shadow-2xl rounded-t-3xl"
           >
             {/* Handle */}
             <div className="flex justify-center py-3">
@@ -57,7 +57,7 @@ export function BottomDrawer({ isOpen, onClose, project, projectDetails }: Botto
             </div>
 
             {/* Content */}
-            <div className="overflow-y-auto max-h-[calc(85vh-24px)] px-6 pb-6">
+            <div className="overflow-y-auto max-h-[50vh] px-6 pb-6">
               {/* Header */}
               <div className="sticky top-0 bg-background/90 backdrop-blur-sm py-4 mb-6">
                 <div className="flex items-start justify-between">
@@ -87,10 +87,10 @@ export function BottomDrawer({ isOpen, onClose, project, projectDetails }: Botto
               </div>
 
               {/* Featured Image */}
-              {project.featuredImage && (
+              {project.featuredImage?.asset?._ref && (
                 <div className="mb-6">
                   <img
-                    src={urlFor(project.featuredImage)?.url() || ""}
+                    src={urlFor(project.featuredImage.asset)?.url() || ""}
                     alt={project.featuredImage.alt || project.title}
                     className="w-full h-48 object-cover rounded-xl"
                   />
