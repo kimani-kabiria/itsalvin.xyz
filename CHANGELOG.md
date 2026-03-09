@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.21](https://github.com/kimani-kabiria/itsalvin.xyz/compare/v0.1.20...v0.1.21) (2026-03-09)
+
+
+### ✨ Features
+
+* added projects ([d9079f9](https://github.com/kimani-kabiria/itsalvin.xyz/commit/d9079f9bfd1662c1b654a92e57af9beb7a26c00b))
+* started on project layout ([e2d4c57](https://github.com/kimani-kabiria/itsalvin.xyz/commit/e2d4c576cf8af7cb5b0de00bb2d9befc21d5bf0f))
+
 ### [0.1.20](https://github.com/kimani-kabiria/itsalvin.xyz/compare/v0.1.19...v0.1.20) (2026-03-09)
 
 
