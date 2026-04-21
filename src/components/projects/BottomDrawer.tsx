@@ -77,6 +77,7 @@ export function BottomDrawer({ isOpen, onClose, project, projectDetails }: Botto
                     </div>
                   </div>
                   <button
+                    type="button"
                     onClick={onClose}
                     className="rounded-lg p-2 hover:bg-muted transition-colors"
                     aria-label="Close drawer"
@@ -181,9 +182,9 @@ export function BottomDrawer({ isOpen, onClose, project, projectDetails }: Botto
                             Technologies Used
                           </h5>
                           <div className="flex flex-wrap gap-2">
-                            {detail.technologies.map((tech, techIndex) => (
+                            {detail.technologies.map((tech) => (
                               <span
-                                key={techIndex}
+                                key={tech}
                                 className="px-2 py-1 bg-muted text-muted-foreground rounded-md text-sm"
                               >
                                 {tech}
@@ -201,8 +202,8 @@ export function BottomDrawer({ isOpen, onClose, project, projectDetails }: Botto
                             Key Features
                           </h5>
                           <ul className="space-y-1">
-                            {detail.features.map((feature, featureIndex) => (
-                              <li key={featureIndex} className="flex items-start gap-2 text-sm text-muted-foreground">
+                            {detail.features.map((feature) => (
+                              <li key={feature} className="flex items-start gap-2 text-sm text-muted-foreground">
                                 <div className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 flex-shrink-0" />
                                 <span>{feature}</span>
                               </li>
@@ -219,8 +220,8 @@ export function BottomDrawer({ isOpen, onClose, project, projectDetails }: Botto
                             Challenges & Solutions
                           </h5>
                           <ul className="space-y-1">
-                            {detail.challenges.map((challenge, challengeIndex) => (
-                              <li key={challengeIndex} className="flex items-start gap-2 text-sm text-muted-foreground">
+                            {detail.challenges.map((challenge) => (
+                              <li key={challenge} className="flex items-start gap-2 text-sm text-muted-foreground">
                                 <div className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 flex-shrink-0" />
                                 <span>{challenge}</span>
                               </li>

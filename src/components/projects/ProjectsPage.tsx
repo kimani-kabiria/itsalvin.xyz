@@ -2,10 +2,11 @@
 
 import { useState } from "react";
 import { motion } from "motion/react";
-import { ProjectCard } from "./ProjectCardInteractive";
+import { ModernProjectCard } from "./ModernProjectCard";
 import { BottomDrawer } from "./BottomDrawer";
+import { WorkHeader } from "./WorkHeader";
 import { useProjectDetails } from "@/hooks/api/projects";
-import { Project, ProjectDetail } from "@/types/sanity";
+import { Project } from "@/types/sanity";
 
 interface ProjectsPageProps {
   projects: Project[];
@@ -21,6 +22,11 @@ export function ProjectsPage({ projects }: ProjectsPageProps) {
 
   // Determine card sizes for bento grid layout
   const getCardSize = (index: number, isFeatured: boolean): "large" | "wide" | "medium" | "small" => {
+    // For 2 projects or fewer, make them both large for better visual impact
+    if (projects.length <= 2) {
+      return "large";
+    }
+    
     if (isFeatured) {
       // Featured projects get larger sizes
       const sizes: ("large" | "wide" | "medium")[] = ["large", "wide", "large"];
@@ -74,26 +80,10 @@ export function ProjectsPage({ projects }: ProjectsPageProps) {
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
-      <div className="sticky top-0 left-0 w-full z-30 bg-background/90 backdrop-blur-sm border-b">
-        <div className="container mx-auto px-6 py-6">
-          <div className="flex items-center justify-between">
-            <div>
-              <h1 className="text-3xl sm:text-4xl font-bold font-[family-name:var(--font-acorn-bold)]">
-                My Projects
-              </h1>
-              <p className="text-muted-foreground mt-1">
-                A collection of my work and side projects
-              </p>
-            </div>
-            <div className="text-sm text-muted-foreground">
-              {projects.length} projects
-            </div>
-          </div>
-        </div>
-      </div>
+      <WorkHeader projectsCount={projects.length} />
 
       {/* Bento Grid */}
-      <div className="container mx-auto px-6 py-8">
+      <div className="py-8">
         {projects.length === 0 ? (
           <div className="flex items-center justify-center py-32">
             <div className="text-center">
@@ -106,7 +96,11 @@ export function ProjectsPage({ projects }: ProjectsPageProps) {
           </div>
         ) : (
           <motion.div
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 auto-rows-[300px] gap-6"
+            className={`grid gap-6 ${
+              projects.length <= 2 
+                ? 'grid-cols-1 md:grid-cols-2 auto-rows-[400px]' 
+                : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 auto-rows-[300px]'
+            }`}
             variants={containerVariants}
             initial="hidden"
             animate="visible"
@@ -117,7 +111,7 @@ export function ProjectsPage({ projects }: ProjectsPageProps) {
                 variants={itemVariants}
                 className="relative"
               >
-                <ProjectCard
+                <ModernProjectCard
                   project={project}
                   onClick={() => handleProjectClick(project)}
                   size={getCardSize(index, project.isFeatured)}

@@ -18,6 +18,7 @@ export function MobileMenuDrawer({ categories, selectedCategory, onCategoryChang
     <>
       {/* Hamburger Menu Button */}
       <button
+        type="button"
         onClick={() => setIsOpen(true)}
         className="lg:hidden fixed top-4 right-4 z-40 p-3 bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
         aria-label="Open menu"
@@ -27,9 +28,11 @@ export function MobileMenuDrawer({ categories, selectedCategory, onCategoryChang
 
       {/* Backdrop */}
       {isOpen && (
-        <div
+        <button
+          type="button"
           className="fixed inset-0 bg-black/50 z-40 lg:hidden"
           onClick={() => setIsOpen(false)}
+          aria-label="Close menu"
         />
       )}
 
@@ -44,6 +47,7 @@ export function MobileMenuDrawer({ categories, selectedCategory, onCategoryChang
             Menu
           </h2>
           <button
+            type="button"
             onClick={() => setIsOpen(false)}
             className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
             aria-label="Close menu"
