@@ -5,8 +5,8 @@ import type { Post } from '@/types/sanity';
 export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);
-    const limit = parseInt(searchParams.get('limit') || '6');
-    const skip = parseInt(searchParams.get('skip') || '0');
+    const limit = parseInt(searchParams.get('limit') || '6', 10);
+    const skip = parseInt(searchParams.get('skip') || '0', 10);
     const category = searchParams.get('category');
     const search = searchParams.get('search');
 

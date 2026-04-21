@@ -49,6 +49,7 @@ export function WorkDetailModal({ isOpen, onClose, workDetails, companyName, rol
                 <p className="text-muted-foreground mt-1">{role}</p>
               </div>
               <button
+                type="button"
                 onClick={onClose}
                 className="rounded-lg p-2 hover:bg-muted transition-colors"
                 aria-label="Close modal"
@@ -90,9 +91,9 @@ export function WorkDetailModal({ isOpen, onClose, workDetails, companyName, rol
                           <h4 className="font-medium">Technologies Used</h4>
                         </div>
                         <div className="flex flex-wrap gap-2">
-                          {detail.technologies.map((tech, techIndex) => (
+                          {detail.technologies.map((tech) => (
                             <span
-                              key={techIndex}
+                              key={tech}
                               className="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium"
                             >
                               {tech}
@@ -110,8 +111,8 @@ export function WorkDetailModal({ isOpen, onClose, workDetails, companyName, rol
                           <h4 className="font-medium">Key Achievements</h4>
                         </div>
                         <ul className="space-y-2">
-                          {detail.achievements.map((achievement, achievementIndex) => (
-                            <li key={achievementIndex} className="flex items-start gap-3">
+                          {detail.achievements.map((achievement) => (
+                            <li key={achievement} className="flex items-start gap-3">
                               <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
                               <span className="text-sm text-muted-foreground">{achievement}</span>
                             </li>

@@ -139,7 +139,7 @@ export function AboutModal({ isOpen, onClose }: AboutModalProps) {
                   { emoji: "📚", title: "Learning", desc: "Tutorials & guides" }
                 ].map((item, index) => (
                   <motion.div
-                    key={index}
+                    key={item.title}
                     className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-800"
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}

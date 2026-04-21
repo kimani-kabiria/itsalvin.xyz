@@ -6,6 +6,7 @@ import { BlogSidebar } from './BlogSidebar';
 import { LoadingSpinner } from './LoadingSpinner';
 import { MobileMenuDrawer } from './MobileMenuDrawer';
 import { BlogHeader } from './BlogHeader';
+import { usePosts } from '@/hooks/api/posts';
 import type { Post, Category } from '@/types/sanity';
 import { motion, AnimatePresence, Variants } from 'motion/react';
 
@@ -56,37 +57,32 @@ export function BlogClient({ initialPosts, categories, totalPosts }: BlogClientP
   const [searchQuery, setSearchQuery] = useState<string>('');
   const observer = useRef<IntersectionObserver | null>(null);
 
-  const loadMorePosts = useCallback(async () => {
-    if (loading || !hasMore) return;
+  const { posts: filteredPostsData, isLoading: filteredLoading } = usePosts({
+    limit: POSTS_PER_PAGE,
+    category: selectedCategory || undefined,
+    search: searchQuery || undefined,
+  });
 
-    setLoading(true);
+  const { posts: morePosts, isLoading: moreLoading } = usePosts({
+    limit: POSTS_PER_PAGE,
+    skip: selectedCategory || searchQuery ? filteredPosts.length : posts.length,
+    category: selectedCategory || undefined,
+    search: searchQuery || undefined,
+  });
+
+  const loadMorePosts = useCallback(() => {
+    if (loading || !hasMore) return;
     
-    try {
-      const categoryParam = selectedCategory ? `&category=${encodeURIComponent(selectedCategory)}` : '';
-      const searchParam = searchQuery ? `&search=${encodeURIComponent(searchQuery)}` : '';
-      const skip = selectedCategory || searchQuery ? filteredPosts.length : posts.length;
-      
-      const response = await fetch(
-        `/api/posts?limit=${POSTS_PER_PAGE}&skip=${skip}${categoryParam}${searchParam}`
-      );
-      
-      if (response.ok) {
-        const newPosts: Post[] = await response.json();
-        
-        if (selectedCategory || searchQuery) {
-          setFilteredPosts(prev => [...prev, ...newPosts]);
-        } else {
-          setPosts(prev => [...prev, ...newPosts]);
-        }
-        
-        setHasMore(newPosts.length === POSTS_PER_PAGE);
+    if (morePosts.length > 0) {
+      if (selectedCategory || searchQuery) {
+        setFilteredPosts(prev => [...prev, ...morePosts]);
+      } else {
+        setPosts(prev => [...prev, ...morePosts]);
       }
-    } catch (error) {
-      console.error('Error loading more posts:', error);
-    } finally {
-      setLoading(false);
+      
+      setHasMore(morePosts.length === POSTS_PER_PAGE);
     }
-  }, [loading, hasMore, selectedCategory, searchQuery, filteredPosts.length, posts.length]);
+  }, [loading, hasMore, selectedCategory, searchQuery, morePosts]);
 
   const lastPostRef = useCallback(
     (node: HTMLDivElement) => {
@@ -103,35 +99,18 @@ export function BlogClient({ initialPosts, categories, totalPosts }: BlogClientP
   );
 
   useEffect(() => {
-    const filterPosts = async () => {
-      if (selectedCategory || searchQuery) {
-        setLoading(true);
-        try {
-          const categoryParam = selectedCategory ? `&category=${encodeURIComponent(selectedCategory)}` : '';
-          const searchParam = searchQuery ? `&search=${encodeURIComponent(searchQuery)}` : '';
-          
-          const response = await fetch(
-            `/api/posts?limit=${POSTS_PER_PAGE}${categoryParam}${searchParam}`
-          );
-          
-          if (response.ok) {
-            const filtered = await response.json() as Post[];
-            setFilteredPosts(filtered);
-            setHasMore(filtered.length === POSTS_PER_PAGE);
-          }
-        } catch (error) {
-          console.error('Error filtering posts:', error);
-        } finally {
-          setLoading(false);
-        }
-      } else {
-        setFilteredPosts(posts);
-        setHasMore(posts.length < totalPosts);
-      }
-    };
+    if (selectedCategory || searchQuery) {
+      setFilteredPosts(filteredPostsData);
+      setHasMore(filteredPostsData.length === POSTS_PER_PAGE);
+    } else {
+      setFilteredPosts(posts);
+      setHasMore(posts.length < totalPosts);
+    }
+  }, [selectedCategory, searchQuery, filteredPostsData, posts, totalPosts]);
 
-    filterPosts();
-  }, [selectedCategory, searchQuery, posts, totalPosts]);
+  useEffect(() => {
+    setLoading(filteredLoading || moreLoading);
+  }, [filteredLoading, moreLoading]);
 
   const displayPosts = selectedCategory || searchQuery ? filteredPosts : posts;
 

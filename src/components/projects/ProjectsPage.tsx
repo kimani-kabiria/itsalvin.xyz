@@ -2,9 +2,12 @@
 
 import { useState } from "react";
 import { motion } from "motion/react";
-import { ProjectCard } from "./ProjectCardInteractive";
-import { BottomDrawer } from "./BottomDrawer";
-import { Project, ProjectDetail } from "@/types/sanity";
+import { ModernProjectCard } from "./ModernProjectCard";
+import { ProjectDetailPanel } from "./ProjectDetailPanel";
+import { WorkHeader } from "./WorkHeader";
+import { CategoryFilter } from "./CategoryFilter";
+import { useProjectDetails } from "@/hooks/api/projects";
+import { Project } from "@/types/sanity";
 
 interface ProjectsPageProps {
   projects: Project[];
@@ -12,12 +15,27 @@ interface ProjectsPageProps {
 
 export function ProjectsPage({ projects }: ProjectsPageProps) {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-  const [projectDetails, setProjectDetails] = useState<ProjectDetail[]>([]);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  
+  const { projectDetails, isLoading, isError, error } = useProjectDetails(
+    selectedProject?._id || ''
+  );
+
+  // Filter projects based on selected category
+  const filteredProjects = selectedCategory
+    ? projects.filter(project => 
+        project.categories?.some(category => category._id === selectedCategory)
+      )
+    : projects;
 
   // Determine card sizes for bento grid layout
   const getCardSize = (index: number, isFeatured: boolean): "large" | "wide" | "medium" | "small" => {
+    // For 2 projects or fewer, make them both large for better visual impact
+    if (filteredProjects.length <= 2) {
+      return "large";
+    }
+    
     if (isFeatured) {
       // Featured projects get larger sizes
       const sizes: ("large" | "wide" | "medium")[] = ["large", "wide", "large"];
@@ -29,31 +47,14 @@ export function ProjectsPage({ projects }: ProjectsPageProps) {
     return sizes[index % sizes.length];
   };
 
-  const handleProjectClick = async (project: Project) => {
+  const handleProjectClick = (project: Project) => {
     setSelectedProject(project);
-    setIsLoading(true);
-    
-    try {
-      const response = await fetch(`/api/project-details?projectId=${project._id}`);
-      if (!response.ok) {
-        throw new Error('Failed to fetch project details');
-      }
-      const details = await response.json();
-      setProjectDetails(details);
-      setIsDrawerOpen(true);
-    } catch (error) {
-      console.error('Failed to fetch project details:', error);
-      // Still open drawer with basic project info
-      setIsDrawerOpen(true);
-    } finally {
-      setIsLoading(false);
-    }
+    setIsDrawerOpen(true);
   };
 
   const handleCloseDrawer = () => {
     setIsDrawerOpen(false);
     setSelectedProject(null);
-    setProjectDetails([]);
   };
 
   // Bento grid animation variants
@@ -88,27 +89,20 @@ export function ProjectsPage({ projects }: ProjectsPageProps) {
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
-      <div className="sticky top-0 left-0 w-full z-30 bg-background/90 backdrop-blur-sm border-b">
-        <div className="container mx-auto px-6 py-6">
-          <div className="flex items-center justify-between">
-            <div>
-              <h1 className="text-3xl sm:text-4xl font-bold font-[family-name:var(--font-acorn-bold)]">
-                My Projects
-              </h1>
-              <p className="text-muted-foreground mt-1">
-                A collection of my work and side projects
-              </p>
-            </div>
-            <div className="text-sm text-muted-foreground">
-              {projects.length} projects
-            </div>
-          </div>
-        </div>
+      <WorkHeader projectsCount={filteredProjects.length} />
+
+      {/* Category Filter */}
+      <div className="py-6">
+        <CategoryFilter
+          projects={projects}
+          selectedCategory={selectedCategory}
+          onCategoryChange={setSelectedCategory}
+        />
       </div>
 
       {/* Bento Grid */}
-      <div className="container mx-auto px-6 py-8">
-        {projects.length === 0 ? (
+      <div className="pb-8">
+        {filteredProjects.length === 0 ? (
           <div className="flex items-center justify-center py-32">
             <div className="text-center">
               <div className="w-16 h-16 bg-muted rounded-full mx-auto mb-4 flex items-center justify-center">
@@ -120,18 +114,22 @@ export function ProjectsPage({ projects }: ProjectsPageProps) {
           </div>
         ) : (
           <motion.div
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 auto-rows-[300px] gap-6"
+            className={`grid gap-6 ${
+              filteredProjects.length <= 2 
+                ? 'grid-cols-1 md:grid-cols-2 auto-rows-[400px]' 
+                : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 auto-rows-[300px]'
+            }`}
             variants={containerVariants}
             initial="hidden"
             animate="visible"
           >
-            {projects.map((project, index) => (
+            {filteredProjects.map((project, index) => (
               <motion.div
                 key={project._id}
                 variants={itemVariants}
                 className="relative"
               >
-                <ProjectCard
+                <ModernProjectCard
                   project={project}
                   onClick={() => handleProjectClick(project)}
                   size={getCardSize(index, project.isFeatured)}
@@ -152,8 +150,8 @@ export function ProjectsPage({ projects }: ProjectsPageProps) {
         </div>
       )}
 
-      {/* Bottom Drawer */}
-      <BottomDrawer
+      {/* Project Detail Panel */}
+      <ProjectDetailPanel
         isOpen={isDrawerOpen}
         onClose={handleCloseDrawer}
         project={selectedProject}

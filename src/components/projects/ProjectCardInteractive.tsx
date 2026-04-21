@@ -1,3 +1,4 @@
+/** biome-ignore-all lint/suspicious/noArrayIndexKey: Allow array index key for particle animation */
 "use client";
 
 import { motion } from "motion/react";

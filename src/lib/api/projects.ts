@@ -1,5 +1,5 @@
 import { client } from "@/sanity/client";
-import { Project, ProjectDetail } from "@/types/sanity";
+import { Project, ProjectDetail, ProjectCategory } from "@/types/sanity";
 
 const PROJECT_FIELDS = `
   _id,
@@ -96,3 +96,4 @@ export async function getProjectWithDetails(slug: string): Promise<{
     projectDetails
   };
 }
+

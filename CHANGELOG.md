@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.23](https://github.com/kimani-kabiria/itsalvin.xyz/compare/v0.1.22...v0.1.23) (2026-04-21)
+
+
+### ✨ Features
+
+* add tanstack query ([55b7882](https://github.com/kimani-kabiria/itsalvin.xyz/commit/55b78828e6ab1e35bb6744363d58c1ca91aae0cf))
+* project detail ([01ca77f](https://github.com/kimani-kabiria/itsalvin.xyz/commit/01ca77f050818c071105065cbe64f936a3c6e476))
+* project page update ([2e009bf](https://github.com/kimani-kabiria/itsalvin.xyz/commit/2e009bfc2697ebf6dacb73c3c760c382ad79bdcd))
+
+
+### 🐛 Bug Fixes
+
+* project view ([55e3b49](https://github.com/kimani-kabiria/itsalvin.xyz/commit/55e3b492aefeee1063075f5ea2fd2715f35bb4b7))
+
 ### [0.1.22](https://github.com/kimani-kabiria/itsalvin.xyz/compare/v0.1.21...v0.1.22) (2026-03-09)
 
 
