@@ -50,12 +50,12 @@ const acornMedium = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Hi👋, its Alvin",
-  description: "This is my portfolio.",
+  title: "Hi\u270b, its Alvin",
+  description: "I am a problem solver first and a software architect / engineer, building scalable digital platforms and products that turn complex ideas into real-world solutions.",
   // SEO optimization
   openGraph: {
-    title: "Hi👋, its Alvin",
-    description: "This is my portfolio.",
+    title: "Hi\u270b, its Alvin",
+    description: "I am a problem solver first and a software architect / engineer, building scalable digital platforms and products that turn complex ideas into real-world solutions.",
     // url: "https://myawesomeapp.com", // Your website URL
     type: "website",
     // images: [
@@ -70,13 +70,13 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     site: "@yourtwitterhandle",
-    title: "Hi👋, its Alvin",
-    description: "This is my portfolio.",
+    title: "Hi\u270b, its Alvin",
+    description: "I am a problem solver first and a software architect / engineer, building scalable digital platforms and products that turn complex ideas into real-world solutions.",
     // image: "https://myawesomeapp.com/twitter-image.png", // Path to your Twitter card image
   },
   robots: "index, follow",
   viewport: "width=device-width, initial-scale=1.0",
-  keywords: "Next.js, SEO, Web Development, Awesome App",
+  keywords: "software architect, software engineer, problem solver, scalable platforms, digital products, web development, full-stack development, software solutions, product development, system architecture",
 };;
 
 export default function RootLayout({
