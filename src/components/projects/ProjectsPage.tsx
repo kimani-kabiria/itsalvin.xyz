@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { motion } from "motion/react";
 import { ModernProjectCard } from "./ModernProjectCard";
-import { BottomDrawer } from "./BottomDrawer";
+import { ProjectDetailPanel } from "./ProjectDetailPanel";
 import { WorkHeader } from "./WorkHeader";
 import { useProjectDetails } from "@/hooks/api/projects";
 import { Project } from "@/types/sanity";
@@ -132,8 +132,8 @@ export function ProjectsPage({ projects }: ProjectsPageProps) {
         </div>
       )}
 
-      {/* Bottom Drawer */}
-      <BottomDrawer
+      {/* Project Detail Panel */}
+      <ProjectDetailPanel
         isOpen={isDrawerOpen}
         onClose={handleCloseDrawer}
         project={selectedProject}
