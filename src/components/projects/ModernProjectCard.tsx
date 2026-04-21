@@ -178,6 +178,20 @@ export function ModernProjectCard({ project, onClick, size = "medium" }: ModernP
               <Calendar className="w-4 h-4" />
               <span>{project.timeline}</span>
             </div>
+
+            {/* Categories */}
+            {project.categories && project.categories.length > 0 && (
+              <div className="flex flex-wrap gap-1.5 mt-3">
+                {project.categories.map((category) => (
+                  <span
+                    key={category._id}
+                    className="px-2 py-1 bg-gradient-to-r from-purple-500/10 to-pink-500/10 border border-purple-500/30 text-purple-600 dark:text-purple-400 text-xs font-medium rounded-md"
+                  >
+                    {category.title}
+                  </span>
+                ))}
+              </div>
+            )}
           </motion.div>
 
           {/* Tech Stack */}

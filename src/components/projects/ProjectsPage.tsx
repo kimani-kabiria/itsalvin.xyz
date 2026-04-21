@@ -5,6 +5,7 @@ import { motion } from "motion/react";
 import { ModernProjectCard } from "./ModernProjectCard";
 import { ProjectDetailPanel } from "./ProjectDetailPanel";
 import { WorkHeader } from "./WorkHeader";
+import { CategoryFilter } from "./CategoryFilter";
 import { useProjectDetails } from "@/hooks/api/projects";
 import { Project } from "@/types/sanity";
 
@@ -15,15 +16,23 @@ interface ProjectsPageProps {
 export function ProjectsPage({ projects }: ProjectsPageProps) {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   
   const { projectDetails, isLoading, isError, error } = useProjectDetails(
     selectedProject?._id || ''
   );
 
+  // Filter projects based on selected category
+  const filteredProjects = selectedCategory
+    ? projects.filter(project => 
+        project.categories?.some(category => category._id === selectedCategory)
+      )
+    : projects;
+
   // Determine card sizes for bento grid layout
   const getCardSize = (index: number, isFeatured: boolean): "large" | "wide" | "medium" | "small" => {
     // For 2 projects or fewer, make them both large for better visual impact
-    if (projects.length <= 2) {
+    if (filteredProjects.length <= 2) {
       return "large";
     }
     
@@ -80,11 +89,20 @@ export function ProjectsPage({ projects }: ProjectsPageProps) {
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
-      <WorkHeader projectsCount={projects.length} />
+      <WorkHeader projectsCount={filteredProjects.length} />
+
+      {/* Category Filter */}
+      <div className="py-6">
+        <CategoryFilter
+          projects={projects}
+          selectedCategory={selectedCategory}
+          onCategoryChange={setSelectedCategory}
+        />
+      </div>
 
       {/* Bento Grid */}
-      <div className="py-8">
-        {projects.length === 0 ? (
+      <div className="pb-8">
+        {filteredProjects.length === 0 ? (
           <div className="flex items-center justify-center py-32">
             <div className="text-center">
               <div className="w-16 h-16 bg-muted rounded-full mx-auto mb-4 flex items-center justify-center">
@@ -97,7 +115,7 @@ export function ProjectsPage({ projects }: ProjectsPageProps) {
         ) : (
           <motion.div
             className={`grid gap-6 ${
-              projects.length <= 2 
+              filteredProjects.length <= 2 
                 ? 'grid-cols-1 md:grid-cols-2 auto-rows-[400px]' 
                 : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 auto-rows-[300px]'
             }`}
@@ -105,7 +123,7 @@ export function ProjectsPage({ projects }: ProjectsPageProps) {
             initial="hidden"
             animate="visible"
           >
-            {projects.map((project, index) => (
+            {filteredProjects.map((project, index) => (
               <motion.div
                 key={project._id}
                 variants={itemVariants}

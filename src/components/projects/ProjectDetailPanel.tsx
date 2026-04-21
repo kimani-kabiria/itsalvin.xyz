@@ -66,7 +66,7 @@ export function ProjectDetailPanel({ isOpen, onClose, project, projectDetails }:
             {/* Content */}
             <div className="overflow-y-auto h-full px-6 pb-8 scrollbar-thin scrollbar-thumb-border scrollbar-track-transparent">
               {/* Header */}
-              <div className="sticky top-0 bg-background/95 backdrop-blur-lg py-4 mb-6 border-b border-border/30 z-10">
+              <div className="sticky top-0 bg-background/65 backdrop-blur-lg backdrop-saturate-150 rounded-xl p-4 mb-6 border-b border-border/30 z-10 shadow-lg">
                 <div className="flex items-start justify-between gap-4">
                   <div className="flex-1 min-w-0">
                     <motion.h2 
@@ -165,6 +165,36 @@ export function ProjectDetailPanel({ isOpen, onClose, project, projectDetails }:
                   </motion.div>
                 )}
               </div>
+
+              {/* Categories */}
+              {project.categories && project.categories.length > 0 && (
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.35 }}
+                  className="mb-6"
+                >
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="p-2 bg-gradient-to-br from-purple-500 to-pink-600 rounded-xl">
+                      <Tag className="w-5 h-5 text-white" />
+                    </div>
+                    <h3 className="font-semibold text-lg text-foreground">Categories</h3>
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    {project.categories.map((category) => (
+                      <motion.span
+                        key={category._id}
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ delay: 0.4 + project.categories.indexOf(category) * 0.05 }}
+                        className="px-4 py-2 bg-gradient-to-r from-purple-500/10 to-pink-500/10 border border-purple-500/30 text-purple-600 dark:text-purple-400 rounded-xl text-sm font-medium hover:shadow-md hover:scale-105 transition-all duration-200 cursor-default"
+                      >
+                        {category.title}
+                      </motion.span>
+                    ))}
+                  </div>
+                </motion.div>
+              )}
 
               {/* Tech Stack */}
               <motion.div
@@ -371,7 +401,7 @@ export function ProjectDetailPanel({ isOpen, onClose, project, projectDetails }:
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 1.0 }}
-                  className="mt-6 pt-6 border-t border-border/30"
+                  className="mt-6 py-6 border-t border-border/30"
                 >
                   <motion.a
                     href={project.url}
