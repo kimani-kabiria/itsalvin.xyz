@@ -3,6 +3,7 @@
 import { motion, useTransform } from "motion/react";
 import { useRef, useState } from "react";
 import { WorkDetailModal } from "@/components/WorkDetailModal";
+import { useWorkDetails } from "@/hooks/api/work";
 import { Experience as ExperienceType, WorkDetail } from "@/types/sanity";
 
 type ExperienceProps = {
@@ -14,48 +15,64 @@ export function Experience({ scrollProgress, experiences: initialExperiences }: 
     const containerRef = useRef<HTMLDivElement>(null);
     const progress = scrollProgress || 0;
     const experiences = initialExperiences || [];
-    const [workDetails, setWorkDetails] = useState<WorkDetail[]>([]);
     const [selectedExperience, setSelectedExperience] = useState<ExperienceType | null>(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [isLoading, setIsLoading] = useState(false);
+    
+    const { workDetails, isLoading } = useWorkDetails(
+        selectedExperience?._id || ''
+    );
 
-    const handleExperienceClick = async (experience: ExperienceType) => {
+    const handleExperienceClick = (experience: ExperienceType) => {
         setSelectedExperience(experience);
-        setIsLoading(true);
-        
-        try {
-            const response = await fetch(`/api/work-details?experienceId=${experience._id}`);
-            if (!response.ok) {
-                throw new Error('Failed to fetch work details');
-            }
-            const details = await response.json();
-            setWorkDetails(details);
-            setIsModalOpen(true);
-        } catch (error) {
-            console.error('Failed to fetch work details:', error);
-        } finally {
-            setIsLoading(false);
-        }
+        setIsModalOpen(true);
     };
 
     const handleCloseModal = () => {
         setIsModalOpen(false);
         setSelectedExperience(null);
-        setWorkDetails([]);
     };
 
-    // Pre-calculate all animations
-    const animations = experiences.map((_, i) => {
-        const start = i * 0.18;
-        const end = start + 0.25;
-        const cardProgress = useTransform(progress, [start, end], [0, 1]);
-        
-        return {
-            y: useTransform(cardProgress, [0, 1], [100, 0]),
-            opacity: useTransform(cardProgress, [0, 1], [0, 1]),
-            scale: useTransform(cardProgress, [0, 1], [0.9, 1])
-        };
-    });
+    // Pre-calculate all animations - create hooks for each experience
+    
+    const cardProgress0 = useTransform(progress, [0, 0.25], [0, 1]);
+    const cardProgress1 = useTransform(progress, [0.18, 0.43], [0, 1]);
+    const cardProgress2 = useTransform(progress, [0.36, 0.61], [0, 1]);
+    const cardProgress3 = useTransform(progress, [0.54, 0.79], [0, 1]);
+    const cardProgress4 = useTransform(progress, [0.72, 0.97], [0, 1]);
+    const cardProgress5 = useTransform(progress, [0.9, 1.15], [0, 1]);
+    
+    const animations = [
+        {
+            y: useTransform(cardProgress0, [0, 1], [100, 0]),
+            opacity: useTransform(cardProgress0, [0, 1], [0, 1]),
+            scale: useTransform(cardProgress0, [0, 1], [0.9, 1])
+        },
+        {
+            y: useTransform(cardProgress1, [0, 1], [100, 0]),
+            opacity: useTransform(cardProgress1, [0, 1], [0, 1]),
+            scale: useTransform(cardProgress1, [0, 1], [0.9, 1])
+        },
+        {
+            y: useTransform(cardProgress2, [0, 1], [100, 0]),
+            opacity: useTransform(cardProgress2, [0, 1], [0, 1]),
+            scale: useTransform(cardProgress2, [0, 1], [0.9, 1])
+        },
+        {
+            y: useTransform(cardProgress3, [0, 1], [100, 0]),
+            opacity: useTransform(cardProgress3, [0, 1], [0, 1]),
+            scale: useTransform(cardProgress3, [0, 1], [0.9, 1])
+        },
+        {
+            y: useTransform(cardProgress4, [0, 1], [100, 0]),
+            opacity: useTransform(cardProgress4, [0, 1], [0, 1]),
+            scale: useTransform(cardProgress4, [0, 1], [0.9, 1])
+        },
+        {
+            y: useTransform(cardProgress5, [0, 1], [100, 0]),
+            opacity: useTransform(cardProgress5, [0, 1], [0, 1]),
+            scale: useTransform(cardProgress5, [0, 1], [0.9, 1])
+        }
+    ];
 
     return (
         <section ref={containerRef} className="relative w-full">

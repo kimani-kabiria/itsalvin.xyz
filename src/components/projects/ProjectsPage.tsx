@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion } from "motion/react";
 import { ProjectCard } from "./ProjectCardInteractive";
 import { BottomDrawer } from "./BottomDrawer";
+import { useProjectDetails } from "@/hooks/api/projects";
 import { Project, ProjectDetail } from "@/types/sanity";
 
 interface ProjectsPageProps {
@@ -12,9 +13,11 @@ interface ProjectsPageProps {
 
 export function ProjectsPage({ projects }: ProjectsPageProps) {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-  const [projectDetails, setProjectDetails] = useState<ProjectDetail[]>([]);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  
+  const { projectDetails, isLoading, isError, error } = useProjectDetails(
+    selectedProject?._id || ''
+  );
 
   // Determine card sizes for bento grid layout
   const getCardSize = (index: number, isFeatured: boolean): "large" | "wide" | "medium" | "small" => {
@@ -29,31 +32,14 @@ export function ProjectsPage({ projects }: ProjectsPageProps) {
     return sizes[index % sizes.length];
   };
 
-  const handleProjectClick = async (project: Project) => {
+  const handleProjectClick = (project: Project) => {
     setSelectedProject(project);
-    setIsLoading(true);
-    
-    try {
-      const response = await fetch(`/api/project-details?projectId=${project._id}`);
-      if (!response.ok) {
-        throw new Error('Failed to fetch project details');
-      }
-      const details = await response.json();
-      setProjectDetails(details);
-      setIsDrawerOpen(true);
-    } catch (error) {
-      console.error('Failed to fetch project details:', error);
-      // Still open drawer with basic project info
-      setIsDrawerOpen(true);
-    } finally {
-      setIsLoading(false);
-    }
+    setIsDrawerOpen(true);
   };
 
   const handleCloseDrawer = () => {
     setIsDrawerOpen(false);
     setSelectedProject(null);
-    setProjectDetails([]);
   };
 
   // Bento grid animation variants
